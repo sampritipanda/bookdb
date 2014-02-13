@@ -1,0 +1,43 @@
+<style>
+  form {
+    display: inline;
+  }
+</style>
+
+<%= form_tag("/books", method: "post") do %>
+  <%= label_tag(:value, "Search by:") %>
+  <%= select_tag(:type, options_for_select([['ISBN', 'isbn'], ['Title', 'title'], ['Author', 'author'], ['Publisher', 'publisher']])) %>
+  <%= text_field_tag(:value) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% if not @books.nil? %>
+<h1>Search Results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ISBN</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Publisher</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% #while @books %>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= link_to book.isbn13, book_path(book.isbn13) %></td>
+          <td><%= book.authors_text %></td>
+          <td><%= book.publisher_text["__content__"] %></td>
+        </tr>
+      <% end %>
+      <% #@books = @books.next_page %>
+    <% #end %>
+  </tbody>
+</table>
+
+<br>
+<% end %>

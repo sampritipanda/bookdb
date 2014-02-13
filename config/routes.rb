@@ -1,4 +1,7 @@
 Bookdb::Application.routes.draw do
+  match 'books', to: 'books#index', via: [:get, :post], as: "books"
+  match 'book/:isbn', to: 'books#show', via: [:get], as: "book"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
