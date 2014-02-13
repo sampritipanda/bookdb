@@ -46,3 +46,5 @@ gem 'debugger', group: [:development, :test]
 
 # ISBN DB
 gem 'isbndb'
+
+gem 'nokogiri'
