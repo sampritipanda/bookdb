@@ -6,7 +6,7 @@
 
 <%= form_tag("/books", method: "post") do %>
   <%= label_tag(:value, "Search by:") %>
-  <%= select_tag(:type, options_for_select([['ISBN', 'isbn'], ['Title', 'title'], ['Author', 'author'], ['Publisher', 'publisher']])) %>
+  <%= select_tag(:type, options_for_select([['ISBN', 'isbn'], ['Title', 'title']])) %>
   <%= text_field_tag(:value) %>
   <%= submit_tag("Search") %>
 <% end %>
